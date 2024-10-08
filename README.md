@@ -195,7 +195,7 @@ Open a web browser and navigate to `http://127.0.0.1:8000` to interact with the 
 
 ### POST `/chat`
 
-Handles user messages and returns the assistant's response along with token count.
+Handles user messages and returns the assistant's response along with token counts.
 
 - **Request Body**:
 
