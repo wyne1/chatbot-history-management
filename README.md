@@ -54,7 +54,7 @@ The application comprises the following components:
 
 ## Output
 <a target="_blank">
-    <img src="images/view.png" />
+    <img src="images/dashboard.png" />
 </a>
 
 ## Directory Structure
