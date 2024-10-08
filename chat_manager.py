@@ -65,7 +65,7 @@ class ChatManager:
 
             # Check if the stack has 20 messages for the current batch ID
             count = self.count_messages_with_batch(stack_key, batch_id)
-            if count == 5:
+            if count == 20:
                 threading.Thread(target=self._create_summary, args=(user_id, batch_id)).start()
                 self.redis_client.set(batch_id_key, batch_id + 1)
 
@@ -134,3 +134,25 @@ class ChatManager:
                 "timestamp": item['Timestamp']
             }
             self.redis_client.rpush(stack_key, json.dumps(message))
+
+    def get_redis_data(self, user_id):
+        # Retrieve all keys related to the user
+        stack_key = f"{user_id}:stack"
+        summary_key = f"{user_id}:summary"
+        batch_id_key = f"{user_id}:batch_id"
+
+        redis_data = {}
+        redis_data['stack'] = [json.loads(msg) for msg in self.redis_client.lrange(stack_key, 0, -1)]
+        summary = self.redis_client.get(summary_key)
+        redis_data['summary'] = json.loads(summary) if summary else None
+        redis_data['batch_id'] = self.redis_client.get(batch_id_key)
+
+        return redis_data
+
+    def get_mongodb_data(self, user_id):
+        # Fetch all messages for the user from MongoDB
+        mongodb_data = list(self.collection.find({"UserId": user_id}).sort("Timestamp", 1))
+        # Convert ObjectId to string
+        for doc in mongodb_data:
+            doc['_id'] = str(doc['_id'])
+        return mongodb_data

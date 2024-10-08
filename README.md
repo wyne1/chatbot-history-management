@@ -1,3 +1,12 @@
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)
+![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white)
+![Anaconda](https://img.shields.io/badge/Anaconda-44A833?logo=anaconda&logoColor=fff)
+![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Google%20Gemini-886FBF?logo=googlegemini&logoColor=fff)
+![Redis](https://img.shields.io/badge/Redis-%23DD0031.svg?logo=redis&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?logo=mongodb&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff)
 # Chatbot with Summarization and Token Counting
 
 A conversational AI application that leverages Redis and MongoDB for efficient chat history management, utilizes Google Gemini for both conversation and summarization, and provides a simple UI to interact with the chatbot while displaying token usage.
@@ -38,6 +47,15 @@ The application comprises the following components:
 - **Google Gemini LLM Integration**: Provides conversational AI capabilities and summarization.
 - **Token Counting**: Uses `tiktoken` to count tokens and demonstrate the efficiency of summarization.
 - **Frontend UI**: Simple web interface built with HTML, CSS, and JavaScript.
+
+<a target="_blank">
+    <img src="images/architecture.png" />
+</a>
+
+## Output
+<a target="_blank">
+    <img src="images/view.png" />
+</a>
 
 ## Directory Structure
 
@@ -225,7 +243,5 @@ This project does not have a specific license. Please contact the project owner 
 - **Redis**: For efficient in-memory data storage.
 - **MongoDB**: For scalable persistent storage.
 - **tiktoken**: For token counting functionality.
-
+- https://community.aws/content/2j9daS4A39fteekgv9t1Hty11Qy/managing-chat-history-at-scale-in-generative-ai-chatbots?lang=en
 ---
-
-Feel free to reach out if you have any questions or need assistance setting up the project.

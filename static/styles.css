@@ -1,21 +1,37 @@
 /* styles.css */
 
-body {
+/* Reset some default browser styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+}
+
+/* Container for the entire layout */
+#container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Left Column */
+#left-column {
+    width: 50%;
+    border-right: 1px solid #cccccc;
+    display: flex;
+    flex-direction: column;
 }
 
 #chat-container {
-    width: 500px;
-    margin: 50px auto;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
 }
 
 #chat-window {
-    height: 400px;
-    overflow-y: scroll;
+    flex: 1;
+    overflow-y: auto;
     border: 1px solid #cccccc;
     padding: 10px;
     margin-bottom: 10px;
@@ -47,4 +63,43 @@ body {
 #send-button {
     width: 15%;
     padding: 10px;
+    margin-left: 5px;
+}
+
+/* Right Column */
+#right-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#redis-container, #mongodb-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+}
+
+#redis-container {
+    border-bottom: 1px solid #cccccc;
+}
+
+#redis-container h2, #mongodb-container h2 {
+    margin-top: 0;
+}
+
+#redis-data, #mongodb-data {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Ensure input and button stay at the bottom */
+#chat-container input, #chat-container button {
+    margin-top: auto;
 }

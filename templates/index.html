@@ -4,14 +4,33 @@
     <meta charset="UTF-8">
     <title>Chatbot with Token Count</title>
     <link rel="stylesheet" href="/static/styles.css">
-    <link rel="icon" href="/static/favicon.ico" type="image/x-icon"> <!-- Optional -->
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div id="chat-container">
-        <div id="chat-window"></div>
-        <div id="token-count">Total Tokens Used: 0</div>
-        <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off"/>
-        <button id="send-button">Send</button>
+    <div id="container">
+        <!-- Left Column: Chat -->
+        <div id="left-column">
+            <div id="chat-container">
+                <div id="chat-window"></div>
+                <div id="token-count">Total Tokens Used: 0</div>
+                <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off"/>
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+
+        <!-- Right Column: Redis and MongoDB Data -->
+        <div id="right-column">
+            <!-- Top Row: Redis Data -->
+            <div id="redis-container">
+                <h2>Redis Data</h2>
+                <pre id="redis-data"></pre>
+            </div>
+            <!-- Bottom Row: MongoDB Data -->
+            <div id="mongodb-container">
+                <h2>MongoDB Data</h2>
+                <pre id="mongodb-data"></pre>
+            </div>
+        </div>
     </div>
     <script src="/static/script.js"></script>
 </body>

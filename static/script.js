@@ -8,6 +8,7 @@ document.getElementById('user-input').addEventListener('keydown', function(e) {
 });
 
 let totalTokenCount = 0;
+const userId = 'user2';  // Assuming a fixed user_id for now
 
 function addMessage(role, content) {
     const chatWindow = document.getElementById('chat-window');
@@ -31,7 +32,7 @@ async function sendMessage() {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ user_id: 'user1', message_text: messageText }),
+        body: JSON.stringify({ user_id: userId, message_text: messageText }),
     });
 
     const data = await response.json();
@@ -39,4 +40,22 @@ async function sendMessage() {
 
     totalTokenCount += data.token_count;
     document.getElementById('token-count').textContent = `Total Tokens Used: ${totalTokenCount}`;
+
+    // Fetch and display Redis and MongoDB data
+    fetchData();
 }
+
+async function fetchData() {
+    // Fetch Redis data
+    const redisResponse = await fetch(`/redis_data/${userId}`);
+    const redisData = await redisResponse.json();
+    document.getElementById('redis-data').textContent = JSON.stringify(redisData, null, 2);
+
+    // Fetch MongoDB data
+    const mongodbResponse = await fetch(`/mongodb_data/${userId}`);
+    const mongodbData = await mongodbResponse.json();
+    document.getElementById('mongodb-data').textContent = JSON.stringify(mongodbData, null, 2);
+}
+
+// Fetch data initially when the page loads
+fetchData();
