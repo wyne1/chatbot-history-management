@@ -48,6 +48,10 @@ The application comprises the following components:
 - **Token Counting**: Uses `tiktoken` to count tokens and demonstrate the efficiency of summarization.
 - **Frontend UI**: Simple web interface built with HTML, CSS, and JavaScript.
 
+<a target="_blank">
+    <img src="images/architecture.png" />
+</a>
+
 ## Output
 <a target="_blank">
     <img src="images/view.png" />
