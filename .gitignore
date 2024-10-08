@@ -1,0 +1,80 @@
+# .gitignore
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment directories
+venv/
+env/
+ENV/
+venv.bak/
+env.bak/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# PyCharm project files
+.idea/
+
+# VS Code settings
+.vscode/
+
+# Environments and environment variable files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Secret files (if any)
+*.pem
+*.key
+
+# Tokenizer cache
+tiktoken/
+
+# Local data files (if any sensitive or large data)
+data/*.json
+data/*.csv
+data/*.db
+data/*.sqlite
+
+# Ignore static files if they are generated during build (uncomment if applicable)
+# /static/*
+# !/static/styles.css
+# !/static/script.js
+
+# Ignore templates if they are generated (uncomment if applicable)
+# /templates/*
+# !/templates/index.html

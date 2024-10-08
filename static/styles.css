@@ -1,0 +1,50 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+#chat-container {
+    width: 500px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 20px;
+}
+
+#chat-window {
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #cccccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#chat-window .message {
+    margin-bottom: 10px;
+}
+
+#chat-window .user {
+    text-align: right;
+    color: blue;
+}
+
+#chat-window .assistant {
+    text-align: left;
+    color: green;
+}
+
+#token-count {
+    margin-bottom: 10px;
+}
+
+#user-input {
+    width: 80%;
+    padding: 10px;
+}
+
+#send-button {
+    width: 15%;
+    padding: 10px;
+}

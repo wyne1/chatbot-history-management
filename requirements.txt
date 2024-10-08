@@ -1,0 +1,9 @@
+google-generativeai
+openai
+langchain
+pymongo
+redis
+fastapi
+uvicorn
+tiktoken
+python-dotenv
