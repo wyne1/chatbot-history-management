@@ -243,5 +243,5 @@ This project does not have a specific license. Please contact the project owner 
 - **Redis**: For efficient in-memory data storage.
 - **MongoDB**: For scalable persistent storage.
 - **tiktoken**: For token counting functionality.
-- https://community.aws/content/2j9daS4A39fteekgv9t1Hty11Qy/managing-chat-history-at-scale-in-generative-ai-chatbots?lang=en
+- **AWS**: https://github.com/aws-samples/managing-chat-history-and-context-at-scale-in-generative-ai-chatbots
 ---
