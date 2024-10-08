@@ -49,7 +49,7 @@ The application comprises the following components:
 - **Frontend UI**: Simple web interface built with HTML, CSS, and JavaScript.
 
 <a target="_blank">
-    <img src="images/architecture.png" />
+    <img src="images/architecture1.png" />
 </a>
 
 ## Output
