@@ -59,66 +59,45 @@ async function sendMessage() {
     fetchData();
 }
 
-// async function fetchData() {
-//     // Fetch Redis data
-//     const redisResponse = await fetch(`/redis_data/${userId}`);
-//     const redisData = await redisResponse.json();
-//     document.getElementById('redis-data').textContent = JSON.stringify(redisData, null, 2);
+async function fetchData() {
+    // Fetch Redis data
+    const redisResponse = await fetch(`/redis_data/${userId}`);
+    const redisData = await redisResponse.json();
+    document.getElementById('redis-data').textContent = JSON.stringify(redisData, null, 2);
 
-//     // Fetch MongoDB data
-//     const mongodbResponse = await fetch(`/mongodb_data/${userId}`);
-//     const mongodbData = await mongodbResponse.json();
-//     document.getElementById('mongodb-data').textContent = JSON.stringify(mongodbData, null, 2);
+    // Fetch MongoDB data
+    const mongodbResponse = await fetch(`/mongodb_data/${userId}`);
+    const mongodbData = await mongodbResponse.json();
+    document.getElementById('mongodb-data').textContent = JSON.stringify(mongodbData, null, 2);
+}
+
+
+
+// async function fetchData() {
+//     const userId = 'user3'; // Replace with actual user ID management
+
+//     // Fetch internal state data
+//     const internalStateResponse = await fetch(`/internal_state/${userId}`);
+//     const internalStateData = await internalStateResponse.json();
+
+//     // Display internal state data
+//     displayInternalState(internalStateData);
 // }
 
-async function fetchConversationHistory() {
-    const userId = 'user1'; // Replace with actual user ID management
-    const response = await fetch(`/conversation_history/${userId}`);
-    const history = await response.json();
-    
-    const chatWindow = document.getElementById('chat-window');
-    history.forEach(message => {
-        const messageElement = document.createElement('div');
-        messageElement.className = message.Role === 'user' ? 'user-message' : 'assistant-message';
-        messageElement.textContent = message.Content;
-        chatWindow.appendChild(messageElement);
-    });
+// function displayInternalState(data) {
+//     const container = document.getElementById('internal-state-container');
+//     container.innerHTML = ''; // Clear previous content
 
-    // Scroll to the bottom of the chat window
-    chatWindow.scrollTop = chatWindow.scrollHeight;
-}
-
-// Call this function when the page loads
-window.onload = function() {
-    fetchConversationHistory();
-    fetchData(); // Your existing function to fetch other data
-};
-
-async function fetchData() {
-    const userId = 'user3'; // Replace with actual user ID management
-
-    // Fetch internal state data
-    const internalStateResponse = await fetch(`/internal_state/${userId}`);
-    const internalStateData = await internalStateResponse.json();
-
-    // Display internal state data
-    displayInternalState(internalStateData);
-}
-
-function displayInternalState(data) {
-    const container = document.getElementById('internal-state-container');
-    container.innerHTML = ''; // Clear previous content
-
-    for (const [key, value] of Object.entries(data)) {
-        const section = document.createElement('div');
-        section.className = 'internal-state-section';
-        section.innerHTML = `
-            <h3>${key}</h3>
-            <pre>${JSON.stringify(value, null, 2)}</pre>
-        `;
-        container.appendChild(section);
-    }
-}
+//     for (const [key, value] of Object.entries(data)) {
+//         const section = document.createElement('div');
+//         section.className = 'internal-state-section';
+//         section.innerHTML = `
+//             <h3>${key}</h3>
+//             <pre>${JSON.stringify(value, null, 2)}</pre>
+//         `;
+//         container.appendChild(section);
+//     }
+// }
 
 // Fetch data initially when the page loads
 fetchData();

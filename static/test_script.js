@@ -24,11 +24,22 @@ document.getElementById('runTest').addEventListener('click', async () => {
 function displayResults(data) {
     const ctx = document.getElementById('resultChart').getContext('2d');
     
+    const colors = {
+        'batch_summary': 'rgb(255, 99, 132)',
+        'summary_truncation': 'rgb(255, 159, 64)',
+        'hierarchical': 'rgb(255, 205, 86)',
+        'keyword': 'rgb(75, 192, 192)',
+        'topic': 'rgb(54, 162, 235)',
+        'sliding_window': 'rgb(153, 102, 255)',
+        'sliding_window_5': 'rgb(201, 203, 207)',
+        'hybrid': 'rgb(201, 203, 207)'
+    };
+
     const datasets = Object.entries(data).map(([approach, values]) => ({
         label: approach,
         data: values.map(([x, y]) => ({x, y})),
         fill: false,
-        borderColor: getRandomColor(),
+        borderColor: colors[approach] || getRandomColor(),
         tension: 0.1
     }));
 
@@ -51,19 +62,10 @@ function displayResults(data) {
                 y: {
                     title: {
                         display: true,
-                        text: 'Cumulative Token Count'
+                        text: 'Prompt Token Count'
                     }
                 }
             }
         }
     });
-}
-
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
 }

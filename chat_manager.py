@@ -3,7 +3,7 @@
 import threading
 import json
 from datetime import datetime
-from context_managers import ExistingApproach, HierarchicalSummary, KeywordExtractor, TopicClusterer, SlidingWindowContext, HybridStorage
+from context_managers import ExistingApproach, HierarchicalSummary, KeywordExtractor, TopicClusterer, SlidingWindowContext, HybridStorage, EnhancedExistingApproach
 from advanced_context_manager import AdvancedContextManager
 from utils.redis_client import get_redis_client
 from utils.mongo_client import get_mongo_client
@@ -164,11 +164,13 @@ logger = logging.getLogger(__name__)
 class ChatManager:
     def __init__(self):
         self.approaches = {
-            'existing': ExistingApproach(),
+            'batch_summary': ExistingApproach(),
+            # 'summary_truncation': EnhancedExistingApproach(),
             'hierarchical': HierarchicalSummary(),
-            'keyword': KeywordExtractor(),
-            'topic': TopicClusterer(),
+            # 'keyword': KeywordExtractor(),
+            # 'topic': TopicClusterer(),
             'sliding_window': SlidingWindowContext(),
+            'sliding_window_5': SlidingWindowContext(window_size=5),
             # 'hybrid': HybridStorage(),
             # 'advanced': AdvancedContextManager()
         }
