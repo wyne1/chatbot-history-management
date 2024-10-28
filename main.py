@@ -70,6 +70,11 @@ async def chat_endpoint(message: Message):
     response_text, token_count = handle_user_message(chat_manager, message.user_id, message.message_text)
     return {"response": response_text, "token_count": token_count}
 
+@app.get("/conversation_history/{user_id}")
+async def get_conversation_history(user_id: str):
+    mongodb_data = chat_manager.get_mongodb_data(user_id)
+    return JSONResponse(content=mongodb_data)
+
 @app.post("/change_approach")
 async def change_approach(approach_change: ApproachChange):
     chat_manager.set_approach(approach_change.approach)

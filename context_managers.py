@@ -561,35 +561,6 @@ class SlidingWindowContext:
             "window": self.messages
         }
 
-class HybridStorage:
-    def __init__(self):
-        self.memory_cache = {}
-        self.redis_client = get_redis_client()
-        self.mongo_client = get_mongo_client()
-
-    def add_message(self, user_id, message_dict):
-        if user_id not in self.memory_cache:
-            self.memory_cache[user_id] = []
-        self.memory_cache[user_id].append(message_dict)
-        if len(self.memory_cache[user_id]) > 200:
-            self.memory_cache[user_id].pop(0)
-
-        # Add to Redis (recent history)
-        self.redis_client.lpush(f"user:{user_id}:messages", json.dumps(message_dict))
-        self.redis_client.ltrim(f"user:{user_id}:messages", 0, 999)
-
-        # Add to MongoDB (long-term storage)
-        self.mongo_client.chat_history.insert_one({"user_id": user_id, "message": message_dict})
-
-    def get_context(self, user_id):
-        context = {
-            "recent": self.memory_cache.get(user_id, []),
-            "mid_term": [json.loads(msg) for msg in self.redis_client.lrange(f"user:{user_id}:messages", 0, -1)],
-            "long_term": list(self.mongo_client.chat_history.find({"user_id": user_id}).sort("_id", -1).limit(1000))
-        }
-        return context
-    
-    def get_internal_state(self, user_id):
         return {
             "memory_cache": self.memory_cache.get(user_id, []),
             "redis": [json.loads(msg) for msg in self.redis_client.lrange(f"user:{user_id}:messages", 0, -1)],

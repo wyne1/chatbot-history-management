@@ -59,7 +59,7 @@ conversation = [
     {"role": "user", "content": "What is virtualenv and why should I use it?"},
     {"role": "assistant", "content": "Virtualenv is a tool that creates isolated Python environments for your projects. It allows you to manage dependencies separately for each project, preventing conflicts between package versions and ensuring consistent environments across different development setups."},
     {"role": "user", "content": "How do I create a virtual environment using virtualenv?"},
-    {"role": "assistant", "content": "First, install virtualenv if you haven’t already:\n\n\npip install virtualenv\n\n\nThen, create a new virtual environment by running:\n\n\nvirtualenv myenv\n\n\nActivate the environment with:\n- On Windows:\n  myenv\Scripts\activate\n- On macOS and Linux:\n  ```source myenv/bin/activate```"},
+    {"role": "assistant", "content": "First, install virtualenv if you haven’t already:\n\n\npip install virtualenv\n\n\nThen, create a new virtual environment by running:\n\n\nvirtualenv myenv\n\n\nActivate the environment with:\n- On Windows:\n  myenv\Scripts\activate\n- On macOS and Linux:\n  source myenv/bin/activate"},
     {"role": "user", "content": "What is the difference between `==` and `is` operators in Python?"},
     {"role": "assistant",
         "content": "The `==` operator checks if the values of two objects are equal, while the `is` operator checks if both references point to the same object in memory. For example:\n\n```python\na = [1, 2, 3]\nb = [1, 2, 3]\nprint(a == b)  # True\nprint(a is b)  # False\n```"},
